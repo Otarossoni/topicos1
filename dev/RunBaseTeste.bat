@@ -9,3 +9,13 @@ rem npm install express --save
 rem npm install mongodb --save
 rem npm install nodemon --save-dev
 rem npm install cors --save
+
+rem --iniciar aplicação--
+rem cd dev
+rem ./RunBaseTeste.bat
+
+rem abrir novo console
+rem cd dev
+rem cd .\apiteste\
+rem npm install
+rem npm run dev
