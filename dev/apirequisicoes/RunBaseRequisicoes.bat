@@ -18,6 +18,6 @@ rem ./RunBaseRequisicoes.bat
 
 rem abrir novo console
 rem cd dev
-rem cd .\apiteste\
+rem cd .\apirequisicoes\
 rem npm install
 rem npm run dev

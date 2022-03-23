@@ -1,4 +1,45 @@
+@apiUrl = http://localhost:3000/api
+//{{apiUrl}}
+
 # Obter a lista de colaboradores
-GET http://localhost:3000/api/colaboradores
+GET {{apiUrl}}/colaboradores
+Content-Type: application/json
+###
+
+# Inserir novo colaborador
+POST {{apiUrl}}/colaboradores
+Content-Type: application/json
+
+{
+ "nome": "Otávio Colaborador", 
+ "email": "otaviocolaborador@upf.br",
+ "senha": "123"
+}
+###
+
+# Alterar colaborador
+PUT {{apiUrl}}/colaboradores
+Content-Type: application/json
+
+{
+ "_id": "623a5f1b3931aeba8ba5571b",
+ "nome": "Teste Mudado", 
+ "email": "testemudado@upf.br",
+ "senha": "123"
+}
+###
+
+# Excluir um colaboradores
+DELETE {{apiUrl}}/colaboradores/623a61ca1b44b7e43f56850e
+Content-Type: application/json
+###
+
+# Obter pelo id de colaborador
+GET {{apiUrl}}/colaboradores/623a61ca1b44b7e43f56850e
+Content-Type: application/json
+###
+
+# Obter colaboradores filtrando
+GET {{apiUrl}}/colaboradores/filtro/teste
 Content-Type: application/json
 ###
