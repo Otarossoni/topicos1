@@ -39,7 +39,7 @@ GET {{apiUrl}}/solicitantes/623a67846eee7927b1c961e0
 Content-Type: application/json
 ###
 
-# Obter solicitantes filtrando
+# Obter solicitante filtrando
 GET {{apiUrl}}/solicitantes/filtro/soli
 Content-Type: application/json
 ###

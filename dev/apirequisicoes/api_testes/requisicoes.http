@@ -1,12 +1,12 @@
 @apiUrl = http://localhost:3000/api
 //{{apiUrl}}
 
-# Obter a lista de requisicoes
+# Obter a lista de requisições
 GET {{apiUrl}}/requisicoes
 Content-Type: application/json
 ###
 
-# Inserir novo requisicao
+# Inserir nova requisição
 POST {{apiUrl}}/requisicoes
 Content-Type: application/json
 
@@ -20,7 +20,7 @@ Content-Type: application/json
 }
 ###
 
-# Alterar requisicao
+# Alterar requisição
 PUT {{apiUrl}}/requisicoes
 Content-Type: application/json
 
@@ -35,17 +35,17 @@ Content-Type: application/json
 }
 ###
 
-# Excluir um requisicao
+# Excluir uma requisição
 DELETE {{apiUrl}}/requisicoes/623a745e05a4286ab31c7872
 Content-Type: application/json
 ###
 
-# Obter pelo id de requisicao
+# Obter pelo id de requisição
 GET {{apiUrl}}/requisicoes/623a74cc05a4286ab31c7881
 Content-Type: application/json
 ###
 
-# Obter requisicoes filtrando
+# Obter requisição filtrando
 GET {{apiUrl}}/requisicoes/filtro/andamento
 Content-Type: application/json
 ###

@@ -1,0 +1,55 @@
+@apiUrl = http://localhost:3000/api
+//{{apiUrl}}
+
+# Obter a lista de atividades
+GET {{apiUrl}}/atividades
+Content-Type: application/json
+###
+
+# Inserir nova atividade
+POST {{apiUrl}}/atividades
+Content-Type: application/json
+
+{
+ "titulo": "Atividade teste", 
+ "descricao": "Codificar métodos para API de Atividades! Funcionou tudo!",
+ "status": "Concluído",
+ "prazo": "2002-05-12",
+ "agendaInicio": "2022-03-26",
+ "dataHoraTermino": "2022-03-27",
+ "requisicao": "623a74cc05a4286ab31c7881",
+ "colaborador": "623a733205a4286ab31c786c"
+}
+###
+
+# Alterar uma atividade
+PUT {{apiUrl}}/atividades
+Content-Type: application/json
+
+{
+ "_id": "623f9b20d34bd647e4c458f3",   
+ "titulo": "Atividade concluída! 100%", 
+ "descricao": "Codificar métodos para API de Atividades!",
+ "status": "Concluído",
+ "prazo": "2002-05-12",
+ "agendaInicio": "2022-03-26",
+ "dataHoraTermino": "2022-03-27",
+ "requisicao": "623a74cc05a4286ab31c7881",
+ "colaborador": "623a733205a4286ab31c786c"
+}
+###
+
+# Excluir uma atividade
+DELETE {{apiUrl}}/atividades/623f9a86d34bd647e4c458ec
+Content-Type: application/json
+###
+
+# Obter pelo id de atividade
+GET {{apiUrl}}/atividades/623f9b20d34bd647e4c458f3
+Content-Type: application/json
+###
+
+# Obter atividade filtrando
+GET {{apiUrl}}/atividades/filtro/teste
+Content-Type: application/json
+###

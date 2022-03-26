@@ -15,7 +15,7 @@ Content-Type: application/json
 }
 ###
 
-# Alterar usuário
+# Alterar tipo de requisição
 PUT {{apiUrl}}/tipoRequisicoes
 Content-Type: application/json
 

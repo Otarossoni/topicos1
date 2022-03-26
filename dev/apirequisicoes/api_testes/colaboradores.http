@@ -29,7 +29,7 @@ Content-Type: application/json
 }
 ###
 
-# Excluir um colaboradores
+# Excluir um colaborador
 DELETE {{apiUrl}}/colaboradores/623a61ca1b44b7e43f56850e
 Content-Type: application/json
 ###
@@ -39,7 +39,7 @@ GET {{apiUrl}}/colaboradores/623a61ca1b44b7e43f56850e
 Content-Type: application/json
 ###
 
-# Obter colaboradores filtrando
+# Obter colaborador filtrando
 GET {{apiUrl}}/colaboradores/filtro/teste
 Content-Type: application/json
 ###

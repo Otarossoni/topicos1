@@ -19,4 +19,10 @@ routes.use("/api", tipoRequisicaoRout);
 const requisicaoRout = require("./RequisicaoRout.js");
 routes.use("/api", requisicaoRout);
 
+const atividadeRout = require("./AtividadeRout.js");
+routes.use("/api", atividadeRout);
+
+const andamentoRout = require("./AndamentoRout.js");
+routes.use("/api", andamentoRout);
+
 module.exports = routes;
