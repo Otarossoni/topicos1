@@ -1,0 +1,12 @@
+**A partir da pasta topicos1**
+
+--Iniciar Servidor Mongo--
+cd dev
+cd .\apirequisicoes\
+./RunBaseRequisicoes.bat
+
+abrir novo console
+cd dev
+cd .\apirequisicoes\
+npm install
+npm run dev

@@ -1,0 +1,12 @@
+**Rodar onde quero instalar, ele vai criar uma pasta com o nome do app, 
+que posso mudar substituindo o "app-intro"**
+
+**Cria um novo projeto React
+npx create-react-app app-intro
+
+**Inicia o app React
+cd app-intro
+npm start
+
+**Instala bootstrap**
+npm install bootstrap
