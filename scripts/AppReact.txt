@@ -2,9 +2,10 @@
 que posso mudar substituindo o "app-intro"**
 
 **Cria um novo projeto React
-npx create-react-app app-intro
+npx create-react-app app-intro2
 
 **Inicia o app React
+cd dev
 cd app-intro
 npm start
 

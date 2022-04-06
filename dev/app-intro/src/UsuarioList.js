@@ -9,7 +9,7 @@ const UsuarioList = (props) => {
       >
         Atualizar Lista
       </button>
-      <button type="button" class="btn btn-success">
+      <button className="btn btn-primary btn-sm" onClick={props.inserir}>
         Inserir
       </button>
       <table className="table">
