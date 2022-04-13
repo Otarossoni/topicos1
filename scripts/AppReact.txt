@@ -11,3 +11,14 @@ npm start
 
 **Instala bootstrap**
 npm install bootstrap
+
+**Instala dotenv**
+npm install dotenv --save
+
+**Instala Axios**
+npm install axios --save
+
+**Instala dependencias do PrimeReact**
+npm install primereact --save
+npm install primeicons --save
+npm install react-transition-group --save

@@ -1,22 +1,41 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ColaboradorList from "./ColaboradorList";
 import ColaboradorForm from "./ColaboradorForm";
+import ColaboradorSrv from "./services/ColaboradorSrv";
+import PrimeReact from "primereact/api";
+import "primereact/resources/themes/saga-blue/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
+import { Toast } from "primereact/toast";
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 
 function App() {
-  let colaboradoresList = [
-    { id: 1, nome: "Otávio", email: "otávio@teste", senha: "123" },
-    { id: 2, nome: "Monteiro", email: "monteiro@teste", senha: "456" },
-  ];
-  const [colaboradores, setColaboradores] = useState(colaboradoresList);
+  const [colaboradores, setColaboradores] = useState([]);
+  const toastRef = useRef();
+  useEffect(() => {
+    onClickAtualizar(); // ao inicializar execula método para atualizar
+  }, []);
   const onClickAtualizar = () => {
-    colaboradoresList = [
-      { id: 1, nome: "Otávio", email: "otávio@teste", senha: "123" },
-      { id: 2, nome: "Monteiro", email: "monteiro@teste", senha: "456" },
-      { id: 3, nome: "Rossoni", email: "rossoni@teste", senha: "789" },
-    ];
-    setColaboradores(colaboradoresList);
+    ColaboradorSrv.listar()
+      .then((response) => {
+        setColaboradores(response.data);
+        console.log("Colaboradores atualizados");
+        toastRef.current.show({
+          severity: "success",
+          summary: "Colaboradores Atualizados!",
+          life: 3000,
+        });
+      })
+      .catch((e) => {
+        console.log("Erro: " + e.message);
+        toastRef.current.show({
+          severity: "error",
+          summary: e.message,
+          life: 3000,
+        });
+      });
   };
 
   // operação inserir
@@ -28,40 +47,92 @@ function App() {
     setEditando(true);
   };
   const salvar = () => {
-    console.log("Salvar ...");
-    if (colaborador.id == null) {
+    if (colaborador._id == null) {
       // inclussão
-      colaborador.id = colaboradores.length + 1;
-      setColaboradores([...colaboradores, colaborador]);
+      ColaboradorSrv.incluir(colaborador)
+        .then((response) => {
+          setEditando(false);
+          onClickAtualizar();
+          toastRef.current.show({
+            severity: "success",
+            summary: "Salvou",
+            life: 2000,
+          });
+        })
+        .catch((e) => {
+          toastRef.current.show({
+            severity: "error",
+            summary: e.message,
+            life: 4000,
+          });
+        });
     } else {
       // alteração
-      setColaboradores(
-        colaboradores.map((find) =>
-          find.id === colaborador.id ? colaborador : find
-        )
-      );
+      ColaboradorSrv.alterar(colaborador)
+        .then((response) => {
+          setEditando(false);
+          onClickAtualizar();
+          toastRef.current.show({
+            severity: "success",
+            summary: "Salvou",
+            life: 2000,
+          });
+        })
+        .catch((e) => {
+          toastRef.current.show({
+            severity: "error",
+            summary: e.message,
+            life: 4000,
+          });
+        });
     }
-    setEditando(false);
   };
+
   const cancelar = () => {
     console.log("Cancelou ...");
     setEditando(false);
   };
   const editar = (id) => {
     setColaborador(
-      colaboradores.filter((colaborador) => colaborador.id == id)[0]
+      colaboradores.filter((colaborador) => colaborador._id == id)[0]
     );
     setEditando(true);
   };
-  const excluir = (id) => {
-    setColaboradores(
-      colaboradores.filter((colaborador) => colaborador.id !== id)
-    );
+  const excluir = (_id) => {
+    confirmDialog({
+      message: "Confirma a exclusão?",
+      header: "Confirmação",
+      icon: "pi pi-question",
+      acceptLabel: "Sim",
+      rejectLabel: "Não",
+      acceptClassName: "p-button-danger",
+      accept: () => excluirConfirm(_id),
+    });
+  };
+
+  const excluirConfirm = (_id) => {
+    ColaboradorSrv.excluir(_id)
+      .then((response) => {
+        onClickAtualizar();
+        toastRef.current.show({
+          severity: "success",
+          summary: "Excluído",
+          life: 2000,
+        });
+      })
+      .catch((e) => {
+        toastRef.current.show({
+          severity: "error",
+          summary: e.message,
+          life: 4000,
+        });
+      });
   };
 
   if (!editando) {
     return (
       <div className="App">
+        <ConfirmDialog />
         <ColaboradorList
           colaboradores={colaboradores}
           onClickAtualizar={onClickAtualizar}
@@ -69,6 +140,7 @@ function App() {
           editar={editar}
           excluir={excluir}
         />
+        <Toast ref={toastRef} />
       </div>
     );
   } else {
@@ -80,6 +152,7 @@ function App() {
           salvar={salvar}
           cancelar={cancelar}
         />
+        <Toast ref={toastRef} />
       </div>
     );
   }

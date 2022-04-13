@@ -12,8 +12,7 @@ const ColaboradorList = (props) => {
         Inserir
       </button>
 
-      <table className="table"></table>
-      <table>
+      <table className="table">
         <thead>
           <tr>
             <th>ID</th>
@@ -27,19 +26,19 @@ const ColaboradorList = (props) => {
           {props.colaboradores.length > 0 ? (
             props.colaboradores.map((o, index) => (
               <tr key={index}>
-                <td>{o.id}</td>
+                <td>{o._id}</td>
                 <td>{o.nome}</td>
                 <td>{o.email}</td>
                 <td>{o.senha}</td>
                 <td>
                   <button
-                    onClick={() => props.editar(o.id)}
+                    onClick={() => props.editar(o._id)}
                     className="btn btn-warning btn-sm"
                   >
                     Editar
                   </button>
                   <button
-                    onClick={() => props.excluir(o.id)}
+                    onClick={() => props.excluir(o._id)}
                     className="btn btn-danger btn-sm"
                   >
                     Excluir
