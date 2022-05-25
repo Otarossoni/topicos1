@@ -9,6 +9,11 @@ import { Menubar } from "primereact/menubar";
 
 const Home = lazy(() => import("./pages/home/Home"));
 const ColaboradorCon = lazy(() => import("./pages/colaborador/ColaboradorCon"));
+const SolicitanteCon = lazy(() => import("./pages/solicitante/SolicitanteCon"));
+const TipoRequisicaoCon = lazy(() =>
+  import("./pages/tipoRequisicao/TipoRequisicaoCon")
+);
+const RequisicaoCon = lazy(() => import("./pages/requisicao/RequisicaoCon"));
 
 function Menu() {
   let navigate = useNavigate();
@@ -31,6 +36,27 @@ function Menu() {
             navigate("/colaboradores");
           },
         },
+        {
+          label: "Solicitantes",
+          icon: "pi pi-fw pi-user-plus",
+          command: () => {
+            navigate("/solicitantes");
+          },
+        },
+        {
+          label: "Tipos de Requisição",
+          icon: "pi pi-fw pi-palette",
+          command: () => {
+            navigate("/tipoRequisicoes");
+          },
+        },
+        {
+          label: "Requisição",
+          icon: "pi pi-fw pi-ticket",
+          command: () => {
+            navigate("/requisicoes");
+          },
+        },
       ],
     },
     {
@@ -50,6 +76,9 @@ function App() {
         <Routes>
           <Route index path="/" element={<Home />} />
           <Route path="/colaboradores" element={<ColaboradorCon />} />
+          <Route path="/solicitantes" element={<SolicitanteCon />} />
+          <Route path="/tipoRequisicoes" element={<TipoRequisicaoCon />} />
+          <Route path="/requisicoes" element={<RequisicaoCon />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
