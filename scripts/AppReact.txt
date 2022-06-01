@@ -25,3 +25,6 @@ npm install react-transition-group --save
 
 **Instala react-router-dom**
 npm install --save react-router-dom
+
+** Instala React Hook Form**
+npm install react-hook-form --save

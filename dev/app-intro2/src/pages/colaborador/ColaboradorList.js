@@ -12,20 +12,30 @@ const ColaboradorList = (props) => {
   );
 
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        paddingRight: 20,
+        paddingLeft: 20,
+        textAlign: "center",
+      }}
+    >
       <br />
-      <h4>LISTAGEM DE COLABORADORES</h4>
+      <h4>Listagem de Colaboradores</h4>
       <div style={{ margin: "1%" }}>
-        <button
-          className="btn btn-primary btn-sm"
+        <Button
+          icon="pi pi-refresh"
+          className="p-button-rounded p-button-text"
+          label="Atualizar"
           onClick={props.onClickAtualizar}
-        >
-          Atualizar <i class="pi pi-refresh"></i>
-        </button>
+        ></Button>
         <span> </span>
-        <button className="btn btn-success btn-sm" onClick={props.inserir}>
-          Adicionar <i class="pi pi-plus"></i>
-        </button>
+        <Button
+          icon="pi pi-plus"
+          className="p-button-rounded p-button-text"
+          label="Adicionar"
+          onClick={props.inserir}
+        ></Button>
       </div>
 
       <div className="card">
@@ -52,19 +62,17 @@ const ColaboradorList = (props) => {
             body={(row) => {
               return (
                 <>
-                  <button
+                  <Button
                     onClick={() => props.editar(row._id)}
-                    className="btn btn-warning btn-sm"
-                  >
-                    <i class="pi pi-pencil"></i>
-                  </button>
+                    icon="pi pi-pencil"
+                    className="p-button-rounded p-button-text"
+                  ></Button>
                   <span> </span>
-                  <button
+                  <Button
                     onClick={() => props.excluir(row._id)}
-                    className="btn btn-danger btn-sm"
-                  >
-                    <i class="pi pi-trash"></i>
-                  </button>
+                    icon="pi pi-trash"
+                    className="p-button-rounded p-button-text"
+                  ></Button>
                 </>
               );
             }}
