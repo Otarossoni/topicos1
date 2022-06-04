@@ -22,19 +22,19 @@ const ColaboradorList = (props) => {
     >
       <br />
       <h4>Listagem de Colaboradores</h4>
-      <div style={{ margin: "1%" }}>
-        <Button
-          icon="pi pi-refresh"
-          className="p-button-rounded p-button-text"
-          label="Atualizar"
-          onClick={props.onClickAtualizar}
-        ></Button>
-        <span> </span>
+      <div style={{ margin: "1%", textAlign: "left" }}>
         <Button
           icon="pi pi-plus"
           className="p-button-rounded p-button-text"
           label="Adicionar"
           onClick={props.inserir}
+        ></Button>
+        <span> </span>
+        <Button
+          icon="pi pi-refresh"
+          className="p-button-rounded p-button-text"
+          label="Atualizar"
+          onClick={props.onClickAtualizar}
         ></Button>
       </div>
 

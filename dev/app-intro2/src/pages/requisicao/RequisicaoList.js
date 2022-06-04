@@ -11,21 +11,42 @@ const RequisicaoList = (props) => {
     <Button type="button" icon="pi pi-cloud" className="p-button-text" />
   );
 
+  const dateBodyTemplate = (rowData) => {
+    return new Intl.DateTimeFormat("pt-BR", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    }).format(new Date(rowData.dataHoraCriada));
+  };
+
   return (
-    <div className="App">
+    <div
+      className="App"
+      style={{
+        paddingRight: 20,
+        paddingLeft: 20,
+        textAlign: "center",
+      }}
+    >
       <br />
-      <h4>LISTAGEM DE REQUISIÇÕES</h4>
-      <div style={{ margin: "1%" }}>
-        <button
-          className="btn btn-primary btn-sm"
-          onClick={props.onClickAtualizar}
-        >
-          Atualizar <i class="pi pi-refresh"></i>
-        </button>
+      <h4>Listagem de Requisições</h4>
+      <div style={{ margin: "1%", textAlign: "left" }}>
+        <Button
+          icon="pi pi-plus"
+          className="p-button-rounded p-button-text"
+          label="Adicionar"
+          onClick={props.inserir}
+        ></Button>
         <span> </span>
-        <button className="btn btn-success btn-sm" onClick={props.inserir}>
-          Adicionar <i class="pi pi-plus"></i>
-        </button>
+        <Button
+          icon="pi pi-refresh"
+          className="p-button-rounded p-button-text"
+          label="Atualizar"
+          onClick={props.onClickAtualizar}
+        ></Button>
       </div>
 
       <div className="card">
@@ -40,48 +61,43 @@ const RequisicaoList = (props) => {
           paginatorLeft={paginatorLeft}
           paginatorRight={paginatorRight}
           selectionMode="single"
-          selection={props.requisicoao}
+          selection={props.requisicao}
           onSelectionChange={(e) => props.setRequisicao(e.value)}
         >
           <Column
             field="dataHoraCriada"
             header="Data de Criação"
+            body={dateBodyTemplate}
             sortable
           ></Column>
+          <Column field="titulo" header="Título" sortable filter></Column>
           <Column
             field="solicitante.nome"
             header="Solicitante"
             sortable
           ></Column>
-          {/* <Column field="_id" header="Id" sortable></Column> */}
-          <Column field="titulo" header="Título" sortable filter></Column>
-          {/* <Column field="descricao" header="Descrição" sortable filter></Column> */}
-          {/* <Column field="prazoAtendimento" header="Prazo" sortable></Column> */}
+          <Column field="status" header="Status" sortable filter></Column>
           <Column
             field="tipoRequisicao.descricao"
             header="Tipo"
             sortable
           ></Column>
-          <Column field="status" header="Status" sortable></Column>
-
           <Column
             header="Operações"
             body={(row) => {
               return (
                 <>
-                  <button
+                  <Button
                     onClick={() => props.editar(row._id)}
-                    className="btn btn-warning btn-sm"
-                  >
-                    <i class="pi pi-pencil"></i>
-                  </button>
+                    icon="pi pi-pencil"
+                    className="p-button-rounded p-button-text"
+                  ></Button>
                   <span> </span>
-                  <button
+                  <Button
                     onClick={() => props.excluir(row._id)}
-                    className="btn btn-danger btn-sm"
-                  >
-                    <i class="pi pi-trash"></i>
-                  </button>
+                    icon="pi pi-trash"
+                    className="p-button-rounded p-button-text"
+                  ></Button>
                 </>
               );
             }}
