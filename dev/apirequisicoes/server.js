@@ -8,6 +8,8 @@ app.use(express.json()); // para tratar json
 // definir porta para a API de serviço
 const port = process.env.PORT || 3000;
 
+require("dotenv").config();
+
 // usar o mongo
 require("./server/banco/mongo");
 // Usar as rotas

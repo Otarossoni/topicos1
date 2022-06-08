@@ -68,6 +68,11 @@ function Menu() {
   return <Menubar model={items} />;
 }
 
+sessionStorage.setItem(
+  "token",
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNhNzMzMjA1YTQyODZhYjMxYzc4NmMiLCJub21lIjoiT3TDoXZpbyBDb2xhYm9yYWRvciBDcmlwdG9ncmFmYWRvIiwiaWF0IjoxNjU0NjUwNDMzLCJleHAiOjE2NTQ2NTQwMzN9.G7-GSp155TQ1P3Yowa7uaYufQOjm8L2g778GhK6PI0U"
+);
+
 function App() {
   return (
     <BrowserRouter>

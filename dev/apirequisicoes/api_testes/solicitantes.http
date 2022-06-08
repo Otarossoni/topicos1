@@ -1,6 +1,8 @@
 @apiUrl = http://localhost:3000/api
 //{{apiUrl}}
 
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNhNzMzMjA1YTQyODZhYjMxYzc4NmMiLCJub21lIjoiT3TDoXZpbyBDb2xhYm9yYWRvciBDcmlwdG9ncmFmYWRvIiwiaWF0IjoxNjU0NjUwNDMzLCJleHAiOjE2NTQ2NTQwMzN9.G7-GSp155TQ1P3Yowa7uaYufQOjm8L2g778GhK6PI0U
+
 # Obter a lista de solicitantes
 GET {{apiUrl}}/solicitantes
 Content-Type: application/json
@@ -9,20 +11,22 @@ Content-Type: application/json
 # Inserir novo solicitante
 POST {{apiUrl}}/solicitantes
 Content-Type: application/json
+x-auth-token: {{authToken}}
 
 {
  "nome": "Otávio Solicitante", 
- "email": "otaviosolicitante@upf.br",
- "senha": "12345"
+ "email": "a@upf.br",
+ "senha": "a"
 }
 ###
 
 # Alterar solicitante
 PUT {{apiUrl}}/solicitantes
 Content-Type: application/json
+x-auth-token: {{authToken}}
 
 {
- "_id": "623a67726eee7927b1c961da",
+ "_id": "623a72e205a4286ab31c7862",
  "nome": "Teste Mudado", 
  "email": "testemudado@upf.br",
  "senha": "123"
@@ -32,14 +36,27 @@ Content-Type: application/json
 # Excluir um solicitante
 DELETE {{apiUrl}}/solicitantes/623a67846eee7927b1c961e0
 Content-Type: application/json
+x-auth-token: {{authToken}}
 ###
 
 # Obter pelo id de solicitante
 GET {{apiUrl}}/solicitantes/623a67846eee7927b1c961e0
 Content-Type: application/json
+x-auth-token: {{authToken}}
 ###
 
 # Obter solicitante filtrando
 GET {{apiUrl}}/solicitantes/filtro/soli
 Content-Type: application/json
+x-auth-token: {{authToken}}
+###
+
+# Autenticação de solicitante
+POST {{apiUrl}}/solicitantes/login
+Content-Type: application/json
+
+{
+ "email": "a@upf.br",
+ "senha": "a"
+}
 ###

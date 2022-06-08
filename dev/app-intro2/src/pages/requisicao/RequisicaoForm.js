@@ -31,7 +31,6 @@ const RequisicaoForm = (props) => {
   const {
     register,
     handleSubmit,
-    setError,
     formState: { errors },
   } = useForm();
 

@@ -1,6 +1,8 @@
 @apiUrl = http://localhost:3000/api
 //{{apiUrl}}
 
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNhNzMzMjA1YTQyODZhYjMxYzc4NmMiLCJub21lIjoiT3TDoXZpbyBDb2xhYm9yYWRvciBDcmlwdG9ncmFmYWRvIiwiaWF0IjoxNjU0NjUwNDMzLCJleHAiOjE2NTQ2NTQwMzN9.G7-GSp155TQ1P3Yowa7uaYufQOjm8L2g778GhK6PI0U
+
 # Obter a lista de colaboradores
 GET {{apiUrl}}/colaboradores
 Content-Type: application/json
@@ -9,6 +11,8 @@ Content-Type: application/json
 # Inserir novo colaborador
 POST {{apiUrl}}/colaboradores
 Content-Type: application/json
+x-auth-token: {{authToken}}
+
 
 {
  "nome": "Otávio Colaborador", 
@@ -20,11 +24,12 @@ Content-Type: application/json
 # Alterar colaborador
 PUT {{apiUrl}}/colaboradores
 Content-Type: application/json
+x-auth-token: {{authToken}}
 
 {
- "_id": "623a5f1b3931aeba8ba5571b",
- "nome": "Teste Mudado", 
- "email": "testemudado@upf.br",
+ "_id": "623a733205a4286ab31c786c",
+ "nome": "Otávio Colaborador Criptografado", 
+ "email": "123@upf.br",
  "senha": "123"
 }
 ###
@@ -32,14 +37,27 @@ Content-Type: application/json
 # Excluir um colaborador
 DELETE {{apiUrl}}/colaboradores/623a61ca1b44b7e43f56850e
 Content-Type: application/json
+x-auth-token: {{authToken}}
 ###
 
 # Obter pelo id de colaborador
 GET {{apiUrl}}/colaboradores/623a61ca1b44b7e43f56850e
 Content-Type: application/json
+x-auth-token: {{authToken}}
 ###
 
 # Obter colaborador filtrando
 GET {{apiUrl}}/colaboradores/filtro/teste
 Content-Type: application/json
+x-auth-token: {{authToken}}
+###
+
+# Autenticação de colaborador
+POST {{apiUrl}}/colaboradores/login
+Content-Type: application/json
+
+{
+ "email": "123@upf.br",
+ "senha": "123"
+}
 ###
