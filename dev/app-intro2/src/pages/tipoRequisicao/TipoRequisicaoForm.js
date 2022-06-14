@@ -1,3 +1,4 @@
+import React from "react";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import { useForm } from "react-hook-form";
@@ -15,63 +16,61 @@ const TipoRequisicaoForm = (props) => {
   } = useForm();
 
   const onSubmit = (data) => {
+    //console.log(data);
     props.salvar();
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div
-        style={{
-          paddingRight: 470,
-          paddingLeft: 470,
-          paddingTop: 20,
-          textAlign: "center",
-        }}
-      >
+      <div style={{ padding: 15, textAlign: "center" }}>
         <div className="card" style={{ border: "none" }}>
           <h5>Cadastro de Tipos de Requisição</h5>
-          <div className="p-fluid grid formgrid">
-            <div className="field col-12 md:col-4">
-              <InputText
-                name="descricao"
-                placeholder="Descrição"
-                {...register("descricao", {
-                  required: {
-                    value: true,
-                    message: "A descrição é obrigatória!",
-                  },
-                  maxLength: {
-                    value: 100,
-                    message: "A descrição pode ter no máximo 100 caractéres!",
-                  },
-                  minLength: {
-                    value: 5,
-                    message: "A descrição pode ter no mínimo 5 caractéres!",
-                  },
-                })}
-                defaultValue={props.tipoRequisicao.descricao}
-                onChange={handleInputChange}
-              />
+          <p />
+          <div className="p-fluid grid formgrid" style={{ position: "center" }}>
+            <div className="field col-6 md:col-4">
+              <span className="p-float-label">
+                <InputText
+                  name="descricao"
+                  {...register("descricao", {
+                    required: {
+                      value: true,
+                      message: "O campo descrição é obrigatório!",
+                    },
+                    maxLength: {
+                      value: 100,
+                      message: "A descrição pode ter no máximo 100 caracteres!",
+                    },
+                    minLength: {
+                      value: 5,
+                      message:
+                        "A descrição deve possuir no mínimo 5 caracteres!",
+                    },
+                  })}
+                  defaultValue={props.tipoRequisicao.descricao}
+                  onChange={handleInputChange}
+                />
+                <label htmlFor="descricao">Descrição</label>
+              </span>
               {errors.descricao && (
                 <span
                   style={{
-                    color: "black",
-                    fontSize: 12,
-                    textAlign: "left",
+                    color: "red",
                     fontStyle: "italic",
+                    fontSize: "small",
                   }}
                 >
                   {errors.descricao.message}
                 </span>
               )}
             </div>
-          </div>{" "}
+          </div>
           <br />
-          <div>
+
+          <div style={{ textAlign: "center" }}>
             <Button
               type="submit"
-              icon="pi pi-pencil"
-              className="p-button-rounded p-button-text"
+              icon="pi pi-save"
+              className="p-button-rounded p-button-text "
               label="Salvar"
             ></Button>
             <Button

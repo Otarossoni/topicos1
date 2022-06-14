@@ -1,13 +1,14 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect, useRef } from "react";
+import { Toast } from "primereact/toast";
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 import ColaboradorList from "./ColaboradorList";
 import ColaboradorForm from "./ColaboradorForm";
 import ColaboradorSrv from "./ColaboradorSrv";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-import { Toast } from "primereact/toast";
-import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 
 function ColaboradorCon() {
   const [colaboradores, setColaboradores] = useState([]);
@@ -17,7 +18,7 @@ function ColaboradorCon() {
   const toastRef = useRef();
 
   useEffect(() => {
-    onClickAtualizar(); // ao inicializar execula método para atualizar
+    onClickAtualizar(); // ao inicializar executa o método para atualizar
   }, []);
 
   const onClickAtualizar = () => {
@@ -31,7 +32,6 @@ function ColaboradorCon() {
         });
       })
       .catch((e) => {
-        console.log("Erro: " + e.message);
         toastRef.current.show({
           severity: "error",
           summary: e.message,
@@ -40,15 +40,14 @@ function ColaboradorCon() {
       });
   };
 
-  // operação inserir
   const inserir = () => {
     setColaborador(initialState);
     setEditando(true);
   };
 
   const salvar = () => {
+    //inclusão
     if (colaborador._id == null) {
-      // inclusão
       ColaboradorSrv.incluir(colaborador)
         .then((response) => {
           setEditando(false);
@@ -158,4 +157,5 @@ function ColaboradorCon() {
     );
   }
 }
+
 export default ColaboradorCon;

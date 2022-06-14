@@ -1,32 +1,24 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect, useRef } from "react";
+import { Toast } from "primereact/toast";
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 import RequisicaoList from "./RequisicaoList";
 import RequisicaoForm from "./RequisicaoForm";
 import RequisicaoSrv from "./RequisicaoSrv";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-import { Toast } from "primereact/toast";
-import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 
 function RequisicaoCon() {
   const [requisicoes, setRequisicoes] = useState([]);
-  const initialState = {
-    id: null,
-    titulo: "",
-    descricao: "",
-    dataHoraCriada: "",
-    status: "",
-    prazoAtendimento: "",
-    tipoRequisicao: "",
-    solicitante: "",
-  };
+  const initialState = { id: null, titulo: "", descricao: "", dataHoraCriada: "", status: "", prazoAtendimento: "", tipoRequisicao: "", solicitante: "" };
   const [requisicao, setRequisicao] = useState(initialState);
   const [editando, setEditando] = useState(false);
   const toastRef = useRef();
 
   useEffect(() => {
-    onClickAtualizar(); // ao inicializar execula método para atualizar
+    onClickAtualizar(); // ao inicializar executa o método para atualizar
   }, []);
 
   const onClickAtualizar = () => {
@@ -35,12 +27,11 @@ function RequisicaoCon() {
         setRequisicoes(response.data);
         toastRef.current.show({
           severity: "success",
-          summary: "Requisições Atualizadas!",
+          summary: "Requisições Atualizados!",
           life: 3000,
         });
       })
       .catch((e) => {
-        console.log("Erro: " + e.message);
         toastRef.current.show({
           severity: "error",
           summary: e.message,
@@ -49,15 +40,14 @@ function RequisicaoCon() {
       });
   };
 
-  // operação inserir
   const inserir = () => {
     setRequisicao(initialState);
     setEditando(true);
   };
 
   const salvar = () => {
+    //inclusão
     if (requisicao._id == null) {
-      // inclusão
       RequisicaoSrv.incluir(requisicao)
         .then((response) => {
           setEditando(false);
@@ -102,7 +92,9 @@ function RequisicaoCon() {
   };
 
   const editar = (id) => {
-    setRequisicao(requisicoes.filter((requisicao) => requisicao._id === id)[0]);
+    setRequisicao(
+      requisicoes.filter((requisicao) => requisicao._id === id)[0]
+    );
     setEditando(true);
   };
 
@@ -165,4 +157,5 @@ function RequisicaoCon() {
     );
   }
 }
+
 export default RequisicaoCon;

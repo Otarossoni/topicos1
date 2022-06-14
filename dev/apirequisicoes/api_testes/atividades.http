@@ -40,7 +40,7 @@ Content-Type: application/json
 ###
 
 # Excluir uma atividade
-DELETE {{apiUrl}}/atividades/623f9a86d34bd647e4c458ec
+DELETE {{apiUrl}}/atividades/623f9ccad34bd647e4c45935
 Content-Type: application/json
 ###
 

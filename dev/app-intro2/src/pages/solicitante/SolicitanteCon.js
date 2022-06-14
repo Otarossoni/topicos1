@@ -1,13 +1,14 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect, useRef } from "react";
+import { Toast } from "primereact/toast";
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 import SolicitanteList from "./SolicitanteList";
 import SolicitanteForm from "./SolicitanteForm";
 import SolicitanteSrv from "./SolicitanteSrv";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-import { Toast } from "primereact/toast";
-import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 
 function SolicitanteCon() {
   const [solicitantes, setSolicitantes] = useState([]);
@@ -17,7 +18,7 @@ function SolicitanteCon() {
   const toastRef = useRef();
 
   useEffect(() => {
-    onClickAtualizar(); // ao inicializar execula método para atualizar
+    onClickAtualizar(); // ao inicializar executa o método para atualizar
   }, []);
 
   const onClickAtualizar = () => {
@@ -31,7 +32,6 @@ function SolicitanteCon() {
         });
       })
       .catch((e) => {
-        console.log("Erro: " + e.message);
         toastRef.current.show({
           severity: "error",
           summary: e.message,
@@ -40,15 +40,14 @@ function SolicitanteCon() {
       });
   };
 
-  // operação inserir
   const inserir = () => {
     setSolicitante(initialState);
     setEditando(true);
   };
 
   const salvar = () => {
+    //inclusão
     if (solicitante._id == null) {
-      // inclusão
       SolicitanteSrv.incluir(solicitante)
         .then((response) => {
           setEditando(false);
@@ -158,4 +157,5 @@ function SolicitanteCon() {
     );
   }
 }
+
 export default SolicitanteCon;

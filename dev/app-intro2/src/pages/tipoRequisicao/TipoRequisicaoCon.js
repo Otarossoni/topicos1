@@ -1,37 +1,37 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState, useEffect, useRef } from "react";
+import { Toast } from "primereact/toast";
+import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 import TipoRequisicaoList from "./TipoRequisicaoList";
 import TipoRequisicaoForm from "./TipoRequisicaoForm";
 import TipoRequisicaoSrv from "./TipoRequisicaoSrv";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
-import { Toast } from "primereact/toast";
-import { ConfirmDialog, confirmDialog } from "primereact/confirmdialog";
 
 function TipoRequisicaoCon() {
-  const [tiposRequisicoes, setTiposRequisicoes] = useState([]);
+  const [tiposRequisicao, setTiposRequisicao] = useState([]);
   const initialState = { id: null, descricao: "" };
   const [tipoRequisicao, setTipoRequisicao] = useState(initialState);
   const [editando, setEditando] = useState(false);
   const toastRef = useRef();
 
   useEffect(() => {
-    onClickAtualizar(); // ao inicializar execula método para atualizar
+    onClickAtualizar(); // ao inicializar executa o método para atualizar
   }, []);
 
   const onClickAtualizar = () => {
     TipoRequisicaoSrv.listar()
       .then((response) => {
-        setTiposRequisicoes(response.data);
+        setTiposRequisicao(response.data);
         toastRef.current.show({
           severity: "success",
-          summary: "Tipos de Requisições Atualizados!",
+          summary: "Tipos de Requisição Atualizados!",
           life: 3000,
         });
       })
       .catch((e) => {
-        console.log("Erro: " + e.message);
         toastRef.current.show({
           severity: "error",
           summary: e.message,
@@ -40,15 +40,14 @@ function TipoRequisicaoCon() {
       });
   };
 
-  // operação inserir
   const inserir = () => {
     setTipoRequisicao(initialState);
     setEditando(true);
   };
 
   const salvar = () => {
+    //inclusão
     if (tipoRequisicao._id == null) {
-      // inclusão
       TipoRequisicaoSrv.incluir(tipoRequisicao)
         .then((response) => {
           setEditando(false);
@@ -94,7 +93,7 @@ function TipoRequisicaoCon() {
 
   const editar = (id) => {
     setTipoRequisicao(
-      tiposRequisicoes.filter((tipoRequisicao) => tipoRequisicao._id === id)[0]
+      tiposRequisicao.filter((tipoRequisicao) => tipoRequisicao._id === id)[0]
     );
     setEditando(true);
   };
@@ -135,7 +134,7 @@ function TipoRequisicaoCon() {
       <div>
         <ConfirmDialog />
         <TipoRequisicaoList
-          tiposRequisicoes={tiposRequisicoes}
+          tiposRequisicao={tiposRequisicao}
           onClickAtualizar={onClickAtualizar}
           inserir={inserir}
           editar={editar}
@@ -158,4 +157,5 @@ function TipoRequisicaoCon() {
     );
   }
 }
+
 export default TipoRequisicaoCon;

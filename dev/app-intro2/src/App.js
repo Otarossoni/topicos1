@@ -14,6 +14,8 @@ const TipoRequisicaoCon = lazy(() =>
   import("./pages/tipoRequisicao/TipoRequisicaoCon")
 );
 const RequisicaoCon = lazy(() => import("./pages/requisicao/RequisicaoCon"));
+const AtividadeCon = lazy(() => import("./pages/atividade/AtividadeCon"));
+const AndamentoCon = lazy(() => import("./pages/andamento/AndamentoCon"));
 
 function Menu() {
   let navigate = useNavigate();
@@ -57,6 +59,20 @@ function Menu() {
             navigate("/requisicoes");
           },
         },
+        {
+          label: "Atividade",
+          icon: "pi pi-fw pi-inbox",
+          command: () => {
+            navigate("/atividades");
+          },
+        },
+        {
+          label: "Andamento",
+          icon: "pi pi-fw pi-book",
+          command: () => {
+            navigate("/andamentos");
+          },
+        },
       ],
     },
     {
@@ -70,7 +86,7 @@ function Menu() {
 
 sessionStorage.setItem(
   "token",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNhNzMzMjA1YTQyODZhYjMxYzc4NmMiLCJub21lIjoiT3TDoXZpbyBDb2xhYm9yYWRvciBDcmlwdG9ncmFmYWRvIiwiaWF0IjoxNjU0NjUwNDMzLCJleHAiOjE2NTQ2NTQwMzN9.G7-GSp155TQ1P3Yowa7uaYufQOjm8L2g778GhK6PI0U"
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNhNzMzMjA1YTQyODZhYjMxYzc4NmMiLCJub21lIjoiT3TDoXZpbyBDb2xhYm9yYWRvciBDcmlwdG9ncmFmYWRvIiwiaWF0IjoxNjU1MDg0NzE1LCJleHAiOjE2NTUwODgzMTV9.FR6Wj4MIIaHbT1_Md30KtNONS4WMdXYRIYWOUAWQh0E"
 );
 
 function App() {
@@ -84,6 +100,8 @@ function App() {
           <Route path="/solicitantes" element={<SolicitanteCon />} />
           <Route path="/tipoRequisicoes" element={<TipoRequisicaoCon />} />
           <Route path="/requisicoes" element={<RequisicaoCon />} />
+          <Route path="/atividades" element={<AtividadeCon />} />
+          <Route path="/andamentos" element={<AndamentoCon />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

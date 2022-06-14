@@ -12,41 +12,33 @@ const ColaboradorList = (props) => {
   );
 
   return (
-    <div
-      className="App"
-      style={{
-        paddingRight: 20,
-        paddingLeft: 20,
-        textAlign: "center",
-      }}
-    >
-      <br />
+    <div className="App" style={{ paddingTop: "10px" }}>
       <h4>Listagem de Colaboradores</h4>
-      <div style={{ margin: "1%", textAlign: "left" }}>
+      <div style={{ margin: "10px" }}>
         <Button
-          icon="pi pi-plus"
+          onClick={props.onClickAtualizar}
           className="p-button-rounded p-button-text"
-          label="Adicionar"
-          onClick={props.inserir}
-        ></Button>
+        >
+          <i class="pi pi-refresh" />
+        </Button>
         <span> </span>
         <Button
-          icon="pi pi-refresh"
+          onClick={props.inserir}
           className="p-button-rounded p-button-text"
-          label="Atualizar"
-          onClick={props.onClickAtualizar}
-        ></Button>
+        >
+          <i class="pi pi-plus-circle" />
+        </Button>
       </div>
 
       <div className="card">
         <DataTable
           value={props.colaboradores}
-          responsiveLayout="scroll"
           paginator
+          responsiveLayout="scroll"
           paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
-          currentPageReportTemplate="Mostrando de {first} até {last} de {totalRecords}"
-          rows={10}
-          rowsPerPageOptions={[10, 25, 50, 100]}
+          currentPageReportTemplate="Mostrando de {first} a {last} de {totalRecords}"
+          rows={5}
+          rowsPerPageOptions={[5, 10, 20, 50]}
           paginatorLeft={paginatorLeft}
           paginatorRight={paginatorRight}
           selectionMode="single"
@@ -64,15 +56,17 @@ const ColaboradorList = (props) => {
                 <>
                   <Button
                     onClick={() => props.editar(row._id)}
-                    icon="pi pi-pencil"
                     className="p-button-rounded p-button-text"
-                  ></Button>
+                  >
+                    <i class="pi pi-pencil"></i>
+                  </Button>
                   <span> </span>
                   <Button
                     onClick={() => props.excluir(row._id)}
-                    icon="pi pi-trash"
                     className="p-button-rounded p-button-text"
-                  ></Button>
+                  >
+                    <i class="pi pi-trash"></i>
+                  </Button>
                 </>
               );
             }}
@@ -82,4 +76,5 @@ const ColaboradorList = (props) => {
     </div>
   );
 };
+
 export default ColaboradorList;

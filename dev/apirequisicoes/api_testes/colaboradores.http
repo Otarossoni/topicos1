@@ -1,7 +1,7 @@
 @apiUrl = http://localhost:3000/api
 //{{apiUrl}}
 
-@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNhNzMzMjA1YTQyODZhYjMxYzc4NmMiLCJub21lIjoiT3TDoXZpbyBDb2xhYm9yYWRvciBDcmlwdG9ncmFmYWRvIiwiaWF0IjoxNjU0NjUwNDMzLCJleHAiOjE2NTQ2NTQwMzN9.G7-GSp155TQ1P3Yowa7uaYufQOjm8L2g778GhK6PI0U
+@authToken = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNhNzMzMjA1YTQyODZhYjMxYzc4NmMiLCJub21lIjoiT3TDoXZpbyBDb2xhYm9yYWRvciBDcmlwdG9ncmFmYWRvIiwiaWF0IjoxNjU1MDg0NzE1LCJleHAiOjE2NTUwODgzMTV9.FR6Wj4MIIaHbT1_Md30KtNONS4WMdXYRIYWOUAWQh0E
 
 # Obter a lista de colaboradores
 GET {{apiUrl}}/colaboradores
