@@ -2,13 +2,22 @@ import React from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
+import { Link } from "react-router-dom";
 
 const RequisicaoList = (props) => {
   const paginatorLeft = (
-    <Button type="button" icon="pi pi-refresh" className="p-button-text" />
+    <Link to={"/"} activeClassName="current">
+      <Button type="button" icon="pi pi-home" className="p-button-text" />
+    </Link>
   );
   const paginatorRight = (
-    <Button type="button" icon="pi pi-cloud" className="p-button-text" />
+    <a
+      href="https://github.com/Otarossoni/topicos1"
+      target="_blank"
+      rel="noreferrer"
+    >
+      <Button type="button" icon="pi pi-github" className="p-button-text" />
+    </a>
   );
 
   const dateBodyTemplate = (rowData) => {
@@ -24,20 +33,27 @@ const RequisicaoList = (props) => {
   return (
     <div className="App" style={{ paddingTop: "10px" }}>
       <h4>Listagem de Requisições</h4>
-      <div style={{ margin: "10px" }}>
+      <div
+        style={{
+          margin: "1%",
+          textAlign: "left",
+          paddingRight: 20,
+          paddingLeft: 20,
+        }}
+      >
         <Button
           onClick={props.onClickAtualizar}
           className="p-button-rounded p-button-text"
-        >
-          <i className="pi pi-refresh" />
-        </Button>
+          label="Atualizar"
+          icon="pi pi-refresh"
+        ></Button>
         <span> </span>
         <Button
           className="p-button-rounded p-button-text"
           onClick={props.inserir}
-        >
-          <i className="pi pi-plus-circle" />
-        </Button>
+          label="Adicionar"
+          icon="pi pi-plus-circle"
+        ></Button>
       </div>
 
       <div className="card">

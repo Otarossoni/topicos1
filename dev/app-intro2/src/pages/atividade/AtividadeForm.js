@@ -50,12 +50,19 @@ const AtividadeForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div style={{ padding: 15, textAlign: "center" }}>
+      <div
+        style={{
+          paddingRight: 470,
+          paddingLeft: 470,
+          paddingTop: 20,
+          textAlign: "center",
+        }}
+      >
         <div className="card" style={{ border: "none" }}>
           <h5>Cadastro de Atividades</h5>
           <p />
           <div className="p-fluid grid formgrid" style={{ position: "center" }}>
-            <div className="field col-4 md:col-4">
+            <div className="field col-12 md:col-4">
               <span className="p-float-label">
                 <InputText
                   name="titulo"
@@ -94,7 +101,7 @@ const AtividadeForm = (props) => {
           <br />
 
           <div className="p-fluid grid formgrid">
-            <div className="field col-6 md:col-4">
+            <div className="field col-12 md:col-4">
               <span className="p-float-label">
                 <InputText
                   name="descricao"
@@ -134,7 +141,7 @@ const AtividadeForm = (props) => {
           <br />
 
           <div className="p-fluid grid formgrid" style={{ position: "center" }}>
-            <div className="field col-2 md:col-4">
+            <div className="field col-12 md:col-4">
               <span className="p-float-label">
                 <InputText
                   name="status"
@@ -173,7 +180,7 @@ const AtividadeForm = (props) => {
           <br />
 
           <div className="p-fluid grid formgrid" style={{ position: "center" }}>
-            <div className="field col-2 md:col-4">
+            <div className="field col-12 md:col-4">
               <span>
                 <Calendar
                   name="prazo"
@@ -202,7 +209,7 @@ const AtividadeForm = (props) => {
           <br />
 
           <div className="p-fluid grid formgrid" style={{ position: "center" }}>
-            <div className="field col-2 md:col-4">
+            <div className="field col-12 md:col-4">
               <Calendar
                 name="agendaInicio"
                 showTime

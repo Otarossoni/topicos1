@@ -78,6 +78,11 @@ function Menu() {
     {
       label: "Sair",
       icon: "pi pi-fw pi-power-off",
+      command: () => {
+        <script type="text/javascript">
+          {(window.location = "https://www.google.com.br/")}
+        </script>;
+      },
     },
   ];
 

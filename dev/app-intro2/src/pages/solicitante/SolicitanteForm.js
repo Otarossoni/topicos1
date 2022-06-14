@@ -33,12 +33,19 @@ const SolicitanteForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <div style={{ padding: 15, textAlign: "center" }}>
+      <div
+        style={{
+          paddingRight: 470,
+          paddingLeft: 470,
+          paddingTop: 20,
+          textAlign: "center",
+        }}
+      >
         <div className="card" style={{ border: "none" }}>
           <h5>Cadastro de Solicitantes</h5>
           <p />
           <div className="p-fluid grid formgrid" style={{ position: "center" }}>
-            <div className="field col-6 md:col-4">
+            <div className="field col-12 md:col-4">
               <span className="p-float-label">
                 <InputText
                   name="nome"
@@ -77,7 +84,7 @@ const SolicitanteForm = (props) => {
           <br />
 
           <div className="p-fluid grid formgrid">
-            <div className="field col-6 md:col-4">
+            <div className="field col-12 md:col-4">
               <span className="p-float-label">
                 <InputText
                   name="email"
@@ -116,7 +123,7 @@ const SolicitanteForm = (props) => {
           <br />
 
           <div className="p-fluid grid formgrid">
-            <div className="field col-3 md:col-4">
+            <div className="field col-12 md:col-4">
               <span className="p-float-label">
                 <InputText
                   type={"password"}
@@ -149,7 +156,7 @@ const SolicitanteForm = (props) => {
           <br />
 
           <div className="p-fluid grid formgrid">
-            <div className="field col-3 md:col-4">
+            <div className="field col-12 md:col-4">
               <span className="p-float-label">
                 <Password
                   name="contraSenha"
