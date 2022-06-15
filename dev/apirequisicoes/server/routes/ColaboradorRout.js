@@ -8,7 +8,5 @@ routes.route("/colaboradores").put(controle.alterar);
 routes.route("/colaboradores/:id").delete(controle.excluir);
 routes.route("/colaboradores/:id").get(controle.obterPeloId);
 routes.route("/colaboradores/filtro/:filtro").get(controle.filtrar);
-routes.route("/colaboradores/login").post(controle.login);
-routes.route("/colaboradores/logout").post(controle.logout);
 
 module.exports = routes;

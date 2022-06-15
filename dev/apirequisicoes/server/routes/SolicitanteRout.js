@@ -8,7 +8,5 @@ routes.route("/solicitantes").put(controle.alterar);
 routes.route("/solicitantes/:id").delete(controle.excluir);
 routes.route("/solicitantes/:id").get(controle.obterPeloId);
 routes.route("/solicitantes/filtro/:filtro").get(controle.filtrar);
-routes.route("/solicitantes/login").post(controle.login);
-routes.route("/solicitantes/logout").post(controle.logout);
 
 module.exports = routes;

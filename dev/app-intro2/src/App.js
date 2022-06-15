@@ -1,11 +1,12 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useState, useEffect } from "react";
 import "primereact/resources/themes/saga-blue/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
 import { Menubar } from "primereact/menubar";
+import LoginForm from "./pages/login/LoginForm";
 
 const Home = lazy(() => import("./pages/home/Home"));
 const ColaboradorCon = lazy(() => import("./pages/colaborador/ColaboradorCon"));
@@ -77,24 +78,35 @@ function Menu() {
     },
     {
       label: "Sair",
-      icon: "pi pi-fw pi-power-off",
+      icon: "pi pi-sign-out",
       command: () => {
-        <script type="text/javascript">
-          {(window.location = "https://www.google.com.br/")}
-        </script>;
+        sessionStorage.setItem("token", "");
       },
+      url: "/",
     },
   ];
 
   return <Menubar model={items} />;
 }
 
+/*
 sessionStorage.setItem(
   "token",
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNhNzMzMjA1YTQyODZhYjMxYzc4NmMiLCJub21lIjoiT3TDoXZpbyBDb2xhYm9yYWRvciBDcmlwdG9ncmFmYWRvIiwiaWF0IjoxNjU1MDg0NzE1LCJleHAiOjE2NTUwODgzMTV9.FR6Wj4MIIaHbT1_Md30KtNONS4WMdXYRIYWOUAWQh0E"
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MjNhNzMzMjA1YTQyODZhYjMxYzc4NmMiLCJub21lIjoiT3TDoXZpbyBDb2xhYm9yYWRvciBDcmlwdG9ncmFmYWRvIiwiaWF0IjoxNjU1MjUyNzc0LCJleHAiOjE2NTUyNTYzNzR9.UlJI60IxnJuqH0f3JaS1lsZxav9woEoXD9xQEFndp8s"
 );
+*/
 
 function App() {
+  const [token, setToken] = useState([]);
+
+  useEffect(() => {
+    setToken(sessionStorage.getItem("token"));
+  }, []);
+
+  if (!token || token <= "") {
+    return <LoginForm />;
+  }
+
   return (
     <BrowserRouter>
       <Menu />

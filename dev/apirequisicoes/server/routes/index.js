@@ -9,7 +9,7 @@ routes.use(cors({ origin: "*" }));
 const loginRout = require("./LoginRout.js");
 routes.use("/api", loginRout);
 
-/* const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 routes.use(function (req, res, next) {
   // interceptar as requisições a validar o token
   try {
@@ -32,7 +32,7 @@ routes.use(function (req, res, next) {
   } catch (error) {
     res.status(400).send("Erro no token de autenticação!");
   }
-}); */
+});
 
 //rotas para cada módulo
 const colaboradorRout = require("./ColaboradorRout.js");

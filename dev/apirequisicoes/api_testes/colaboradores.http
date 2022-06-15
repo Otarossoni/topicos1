@@ -53,7 +53,7 @@ x-auth-token: {{authToken}}
 ###
 
 # Autenticação de colaborador
-POST {{apiUrl}}/colaboradores/login
+POST {{apiUrl}}/login
 Content-Type: application/json
 
 {
